@@ -1,0 +1,54 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Esophageal Cancer Protein Expression Explorer</title>
+  <meta name="description" content="Explore protein expression in esophagus cancer samples." />
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" type="text/css"
+    href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+
+  <script type="text/javascript" src="js/search.js"></script>
+  <script type="text/javascript" src="js/autocomplete.js"></script>
+</head>
+
+<body>
+  <h1>Esophageal Cancer Protein Expression Explorer</h1>
+  <p>Explore a dataset of protein expression levels from 125 samples of esophagus cancer cells.</p>
+  <form name="protein_search" id="protein_search" action="">
+    <div id="search_input">
+      <label for="peptide_input">Search for a protein:</label>
+      <input name="search" type="search" id="peptide_input" placeholder="e.g. HER2" autofocus="autofocus" required />
+    </div>
+    <input type="submit" value="Submit" id="submit">
+  </form>
+
+  <section class="protein_info">
+    <h2>Protein Info</h2>
+    <h3 class="peptide_target"></h3>
+    <p class="gene_name"><span class="protein_info_title">Encoding Gene Name: </span><span class="gene_name"></span></p>
+    <p class="location"><span class="protein_info_title">Gene Location: </span><span class="location"></span></p>
+    <p class="summary"><span class="protein_info_title">Summary: </span><span class="summary"></span></p>
+    <p class="data_source">Data from NCBI Gene</p>
+  </section>
+
+  <section class="chart_container">
+    <h2>Expression Visualizations</h2>
+    <div class="row">
+      <img id="correlationImage" class="chart_image" alt="Correlation Plot">
+      <img id="heatmapImage" class="chart_image" alt="Expression Heatmap">
+    </div>
+    <div class="row">
+      <p>This chart shows the 10 proteins with the highest absolute correlation in expression levels to the chosen protein (positive or negative correlation). Label is the Pearson Correlation Coefficient between the relative expression levels of the two proteins. Data from National Cancer Institute GDC Data Portal.</p>
+      <p>Relative expression levels for the protein across the 125 samples in the dataset. Scale is same for all proteins in dataset to allow for absolute comparisons. Data from National Cancer Institute GDC Data Portal.</p>
+    </div>
+  </section>
+
+</body>
+
+</html>
