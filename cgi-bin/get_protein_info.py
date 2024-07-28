@@ -17,11 +17,11 @@ def get_protein_info(peptide: str, db_filename: str) -> List[tuple]:
         cursor.execute("""
         SELECT peptide_target, name, summary, location
         FROM protein_info
-        WHERE peptide_target = ?
+        WHERE peptide_target = ? COLLATE NOCASE
         """, (peptide,))
 
         data = cursor.fetchone()
-    
+
     # Print in JSON format
     print("Content-Type: application/json\n\n")
     print(json.dumps({

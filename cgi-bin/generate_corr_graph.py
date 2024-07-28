@@ -5,32 +5,43 @@ import sys
 import io
 import sqlite3
 from urllib.parse import unquote
+from typing import Tuple
 
 import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def get_protein_correlations(db_filename: str, target_protein: str, limit=10) -> pd.DataFrame:
+def get_protein_correlations(db_filename: str, target_protein: str, limit=10) -> Tuple[str, pd.DataFrame]:
     """
     Retrieve protein correlation data from the database.
     """
-    conn = sqlite3.connect(db_filename)
+    with sqlite3.connect(db_filename) as conn:
 
-    # Find the <limit> peptides with highest absolute correlation
-    query = """
-    SELECT peptide2, correlation
-    FROM expression_correlations
-    WHERE peptide1 = ? AND peptide2 != ?
-    ORDER BY absolute_correlation DESC
-    LIMIT ?
-    """
+        cursor = conn.cursor()
+        # Get proper capitalization for peptide name
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT peptide_target
+            FROM protein_info
+            WHERE peptide_target = ? COLLATE NOCASE
+            """, (target_protein,))
+        target_protein = cursor.fetchone()[0]
+        cursor.close()
 
-    # Store results in pandas dataframe
-    df = pd.read_sql_query(query, conn, params=(target_protein, target_protein, limit))
-    conn.close()
+        # Find the <limit> peptides with highest absolute correlation
+        query = """
+        SELECT peptide2, correlation
+        FROM expression_correlations
+        WHERE peptide1 = ? AND peptide2 != ?
+        ORDER BY absolute_correlation DESC
+        LIMIT ?
+        """
+
+        # Store results in pandas dataframe
+        df = pd.read_sql_query(query, conn, params=(target_protein, target_protein, limit))
 
     # Sort by actual correlation
-    return df.sort_values('correlation')
+    return target_protein, df.sort_values('correlation')
 
 def plot_protein_correlations(df, target_protein):
     """
@@ -79,7 +90,7 @@ if __name__ == "__main__":
 
     db_filename = 'protein_expression.db'
 
-    df = get_protein_correlations(db_filename, peptide)
+    peptide, df = get_protein_correlations(db_filename, peptide)
     buf = plot_protein_correlations(df, peptide)
 
     # Write buffer rather than print for binary data

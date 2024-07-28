@@ -61,7 +61,7 @@ def get_expression_data(peptide: str, db_filename: str) -> List[tuple]:
         cursor.execute("""
         SELECT sample_id, protein_expression
         FROM expression_data
-        WHERE peptide_target = ?
+        WHERE peptide_target = ? COLLATE NOCASE
         """, (peptide,))
 
         return cursor.fetchall()
