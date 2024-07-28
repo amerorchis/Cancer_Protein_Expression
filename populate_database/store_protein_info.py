@@ -20,8 +20,8 @@ def create_protein_info_table(db_filename: str) -> None:
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             peptide_target TEXT UNIQUE,
             name TEXT,
-            summary FLOAT,
-            location FLOAT
+            summary TEXT,
+            location TEXT
         )""")
 
         conn.commit()
