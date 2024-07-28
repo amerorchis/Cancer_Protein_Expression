@@ -46,8 +46,7 @@ function proteinInfo( term ) {
             processProteinJSON(data);
         },
         error: function(jqXHR, textStatus, errorThrown){
-            alert("Failed to perform gene search! textStatus: (" + textStatus +
-                  ") and errorThrown: (" + errorThrown + ")");
+            alert(`${peptide} could not be found. Double check the spelling and try again.`);
         }
     });
 }
