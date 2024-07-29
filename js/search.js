@@ -7,8 +7,8 @@ function loadGraphics() {
 
     // Images and retrieval URLs.
     const images = [
-        { id: '#heatmapImage', url: `/cgi-bin/generate_heatmap.cgi?peptide=${encodeURIComponent(peptide)}` },
-        { id: '#correlationImage', url: `/cgi-bin/generate_corr_graph.cgi?peptide=${encodeURIComponent(peptide)}` }
+        { id: '#heatmapImage', url: `./cgi-bin/generate_heatmap.cgi?peptide=${encodeURIComponent(peptide)}` },
+        { id: '#correlationImage', url: `./cgi-bin/generate_corr_graph.cgi?peptide=${encodeURIComponent(peptide)}` }
     ];
     
     // Use promise chain to multithread image generation.
