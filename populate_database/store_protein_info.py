@@ -137,11 +137,10 @@ def get_gene_info(protein_name):
     gene_info = summary['DocumentSummarySet']['DocumentSummary'][0]
     return gene_info.get('NomenclatureName'), gene_info.get('Summary'), gene_info.get('MapLocation')
 
-def retrieve_store_from_entrez() -> None:
+def retrieve_store_from_entrez(db_filename: str) -> None:
     """
     Get data from Entrez and store it in SQL db.
     """
-    db_filename = '/var/www/html/asmit397/final/protein_expression.db'
     create_protein_info_table(db_filename)
 
     # Get list of proteins we still need to look up
@@ -160,4 +159,5 @@ def retrieve_store_from_entrez() -> None:
     assert len(still_missing) == 0
 
 if __name__ == "__main__":
-    retrieve_store_from_entrez()
+    from db_path import db_filename
+    retrieve_store_from_entrez(db_filename)

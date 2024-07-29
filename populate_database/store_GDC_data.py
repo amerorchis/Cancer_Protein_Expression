@@ -64,7 +64,7 @@ def add_expression_to_db(exp_level: ExpLevel, db_filename: str) -> None:
 
         conn.commit()
 
-def process_manifest() -> list:
+def process_manifest(db_filename: str) -> list:
     """
     Open a GDC manifest file, parse info about the data files, and store the data in a database.
     """
@@ -82,8 +82,9 @@ def process_manifest() -> list:
         filename = f'GDC Data/{_id}/{sample[1]}'
         expression_levels = process_file(filename, _id)
         for exp_level in expression_levels:
-            add_expression_to_db(exp_level, 'protein_expression.db')
+            add_expression_to_db(exp_level, db_filename)
 
 if __name__ == "__main__":
-    build_table('protein_expression.db')
-    process_manifest()
+    from db_path import db_filename
+    build_table(db_filename)
+    process_manifest(db_filename)
