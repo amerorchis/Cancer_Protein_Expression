@@ -88,7 +88,7 @@ if __name__ == "__main__":
     encoded_peptide = form.getvalue('peptide')  # Get the encoded peptide name
     peptide = unquote(encoded_peptide)  # Decode the peptide name
 
-    db_filename = 'protein_expression.db'
+    from db_path import db_filename
 
     peptide, df = get_protein_correlations(db_filename, peptide)
     buf = plot_protein_correlations(df, peptide)

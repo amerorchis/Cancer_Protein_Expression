@@ -1,7 +1,9 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 
 import json
 import sqlite3
+
+from db_path import db_filename
 
 def main(db_filename: str) -> None:
     """
@@ -27,5 +29,4 @@ def main(db_filename: str) -> None:
 
 
 if __name__ == '__main__':
-    db_filename = 'protein_expression.db'
     main(db_filename)

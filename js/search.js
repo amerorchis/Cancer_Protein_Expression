@@ -7,8 +7,8 @@ function loadGraphics() {
 
     // Images and retrieval URLs.
     const images = [
-        { id: '#heatmapImage', url: `/cgi-bin/generate_heatmap.py?peptide=${encodeURIComponent(peptide)}` },
-        { id: '#correlationImage', url: `/cgi-bin/generate_corr_graph.py?peptide=${encodeURIComponent(peptide)}` }
+        { id: '#heatmapImage', url: `/cgi-bin/generate_heatmap.cgi?peptide=${encodeURIComponent(peptide)}` },
+        { id: '#correlationImage', url: `/cgi-bin/generate_corr_graph.cgi?peptide=${encodeURIComponent(peptide)}` }
     ];
     
     // Use promise chain to multithread image generation.
@@ -40,7 +40,7 @@ function proteinInfo( term ) {
 
     // Get data from endpoint and process
     $.ajax({
-        url: `./cgi-bin/get_protein_info.py?peptide=${peptide}`,
+        url: `./cgi-bin/get_protein_info.cgi?peptide=${peptide}`,
         dataType: 'json',
         success: function(data, textStatus, jqXHR) {
             processProteinJSON(data);

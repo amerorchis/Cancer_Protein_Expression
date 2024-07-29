@@ -83,7 +83,7 @@ def insert_correlations(corrs: pd.DataFrame, db_filename: str) -> None:
         conn.commit()
 
 if __name__ == "__main__":
-    db_filename = 'protein_expression.db'
+    db_filename = '/var/www/html/asmit397/final/protein_expression.db'
     create_correlations_table(db_filename)
     corrs = calc_correlations(db_filename)
     insert_correlations(corrs, db_filename)

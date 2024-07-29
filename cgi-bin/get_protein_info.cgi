@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 
 import json
 import sqlite3
@@ -32,7 +32,7 @@ def get_protein_info(peptide: str, db_filename: str) -> List[tuple]:
     }))
 
 if __name__ == "__main__":
-    db_filename = 'protein_expression.db'
+    from db_path import db_filename
     form = cgi.FieldStorage()
     encoded_peptide = form.getvalue('peptide')  # Get the encoded peptide name
     peptide = unquote(encoded_peptide)  # Decode the peptide name

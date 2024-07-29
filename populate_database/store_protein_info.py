@@ -141,7 +141,7 @@ def retrieve_store_from_entrez() -> None:
     """
     Get data from Entrez and store it in SQL db.
     """
-    db_filename = 'protein_expression.db'
+    db_filename = '/var/www/html/asmit397/final/protein_expression.db'
     create_protein_info_table(db_filename)
 
     # Get list of proteins we still need to look up

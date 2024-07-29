@@ -4,7 +4,7 @@ var autocompleteOptions = [];
 // this function gets autocomplete options via an AJAX call
 function getAutocompleteOptions() {
     $.ajax({
-        url: './cgi-bin/autocomplete.py',
+        url: './cgi-bin/autocomplete.cgi',
         dataType: 'json',
         success: function(data, textStatus, jqXHR) {
             autocompleteOptions = data.products || []; // Get products list or an empty array.

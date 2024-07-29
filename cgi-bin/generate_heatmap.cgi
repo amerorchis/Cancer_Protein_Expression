@@ -74,7 +74,7 @@ if __name__ == "__main__":
     encoded_peptide = form.getvalue('peptide')  # Get the encoded peptide name
     peptide = unquote(encoded_peptide)  # Decode the peptide name
 
-    db_filename = 'protein_expression.db'
+    from db_path import db_filename
     expression_data = get_expression_data(peptide, db_filename)
     buf = plot_expression_heatmap(expression_data, peptide, min_value=MIN_EXPRESSION, max_value=MAX_EXPRESSION)
 
