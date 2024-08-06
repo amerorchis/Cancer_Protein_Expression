@@ -27,6 +27,8 @@ Clone the repository onto a device configured as a webserver. Place the CGI scri
 
 Access the main page at: `https://<domain>/path/to/main.html`, where `<domain>` is the root domain for your device (i.e. `http://bfx3.aap.jhu.edu`).
 
+On the class server, the project can be found at [http://bfx3.aap.jhu.edu/asmit397/final/main.html](http://bfx3.aap.jhu.edu/asmit397/final/main.html).
+
 Use the search box on the page to retrieve expression information about different proteins.
 
 ## Functionality
