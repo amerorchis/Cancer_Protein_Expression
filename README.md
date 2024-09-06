@@ -4,6 +4,8 @@ This project is for data exploration of a set of 125 esophageal cancer proteomes
 
 Made by Andrew Smith for AS.410.712. Advanced Practical Computer Concepts for Bioinformatics.
 
+See it at [http://amerorchis.com/proteins](http://amerorchis.com/proteins).
+
 ## Features
 
 - Search for expression data for different esophageal cancer proteins
@@ -27,7 +29,7 @@ Clone the repository onto a device configured as a webserver. Place the CGI scri
 
 Access the main page at: `https://<domain>/path/to/main.html`, where `<domain>` is the root domain for your device (i.e. `http://bfx3.aap.jhu.edu`).
 
-On the class server, the project can be found at [http://bfx3.aap.jhu.edu/asmit397/final/main.html](http://bfx3.aap.jhu.edu/asmit397/final/main.html).
+The tool can be found at [http://amerorchis.com/proteins](http://amerorchis.com/proteins).
 
 Use the search box on the page to retrieve expression information about different proteins.
 
